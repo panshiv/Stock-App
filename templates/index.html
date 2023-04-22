@@ -1,0 +1,101 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Stock Price Notification</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles.css"/>
+    <meta charset="UTF-8">
+    <script>
+      // Hide phone number and email address fields by default
+      window.onload = function() {
+        document.getElementById('phone_number').style.display = 'none';
+        document.getElementById('email_address').style.display = 'none';
+      };
+
+      // Show phone number or email address field based on notification medium selected
+      function showNotificationField() {
+        var notificationMedium = document.getElementById('notification_medium').value;
+        if (notificationMedium == 'text') {
+          document.getElementById('phone_number').style.display = 'block';
+          document.getElementById('email_address').style.display = 'none';
+        } else if (notificationMedium == 'email') {
+          document.getElementById('phone_number').style.display = 'none';
+          document.getElementById('email_address').style.display = 'block';
+        } else {
+          document.getElementById('phone_number').style.display = 'none';
+          document.getElementById('email_address').style.display = 'none';
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Stock Price Notification</h1>
+    <form name="form" id="form" action= '.' method="post">
+      <label for="stock_ticker">Stock Ticker:</label>
+      <input type="text" id="stock_ticker" name="stock_ticker" required  ><br><br>
+      <label for="threshold">Threshold:</label>
+      <input type="number" id="threshold" name="threshold" required ><br><br>
+      <label for="frequency">Frequency:</label>
+      <select id="frequency" name="frequency" required>
+        <option value="">--Select--</option>
+        <option value="minutely">Minutely</option>
+        <option value="hourly">Hourly</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+      </select><br><br>
+      <label for="notification_medium">Notification Medium:</label>
+      <select id="notification_medium" name="notification_medium" onchange="showNotificationField()" required>
+        <option value="">--Select--</option>
+        <option value="text">Text Message</option>
+        <option value="email">Email</option>
+      </select><br><br>
+      <div id="phone_number">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+      </div>
+      <div id="email_address">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required><br><br>
+      </div>
+      <input type="submit" onclick="message()" value="Submit">
+    </form>
+    <div class="message">
+      <div class="success" id="success">Your Preferences Successfully Set!</div>
+      <div class="danger" id="danger">Feilds Can't be Empty!</div> 
+    </div>
+    
+    <script>
+    document.getElementById('message').style.display = 'none';
+    //document.getElementById('danger').style.dsiplay = 'none';
+    //script to show or hide the message
+    function message(){
+    var sticker = document.getElementById('stock_ticker').value;
+    var thr = document.getElementById('threshold').value;
+    var frq = document.getElementById('frequency').value;
+    var ph = document.getElementById('phone');
+    var em = document.getElementById('email');
+    const success = document.getElementById('success');
+    const danger = document.getElementById('danger');
+    const formm = document.getElementById('form');
+    if(sticker === '' || thr === '' || frq === '' ){
+        danger.style.display = 'block';
+    }
+    else{
+        success.style.display = 'block';
+        
+    }
+    setTimeout(() => {
+      formm.reset();
+        document.getElementById('phone_number').style.display = 'none';
+        document.getElementById('email_address').style.display = 'none';
+        danger.style.display = 'none';
+        success.style.display = 'none';
+    }, 4000);
+
+}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(224, 224, 188);
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin: 20px 0;
+    text-align: center;
+  }
+ 
+ 
+
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgba(245, 239, 239, 0.973);
+    border-radius: 5px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 120px;
+    margin-right: 10px;
+    text-align: left;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="tel"],
+  input[type="email"] {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+  input[type="submit"]:active{
+    transform: translateY(4px);
+  }
+  .message{
+    width: 100%;
+    position: relative;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+.message .success, .current-price{
+    font-size: 20px;
+    color: green;
+    position: absolute;
+    animation: buttons .3s linear;
+    display: none;
+}
+.message .current-price{
+  position: relative;
+}
+.message .danger{
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    transition: .3s;
+    animation: buttons .3s linear;
+    display: none;
+}
+
+
+
+  
